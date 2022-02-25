@@ -16,13 +16,20 @@
           </ruby>
         </h1>
         <canvas id="canvas" width="400" height="400" oncontextmenu="return false"></canvas>
-        <label id="color_picker_label">
-          <input type="color" id="color_picker" name="color_picker" value="#333333">
-        </label>
+        <div id="wrapper_controls">
+          <div id="wrapper_controls_left">
+            <label id="color_picker_label">
+              <input type="color" id="color_picker" name="color_picker" value="#333333">
+            </label>
+          </div>
+          <div id="wrapper_controls_right">
+            <p><small>eraser: <span id="status_eraser" class="neg">inactive</span></small></p>
+          </div>
+        </div>
       </main>
       <footer>
         <p><small>(c) 2022 <a href="https://sporeball.dev" target="_blank">sporeball</a></small></p>
-        <p><small>this is the <a href="https://github.com/sporeball/e/commits/master" target="_blank">7th commit</a></small></p>
+        <p><small>this is the <a href="https://github.com/sporeball/e/commits/master" target="_blank">8th commit</a></small></p>
       </footer>
     </div>
     <script type="module" src="script.js"></script>

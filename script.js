@@ -12,14 +12,17 @@ const ctx = canvas.getContext('2d');
 const colorPicker = document.getElementById('color_picker');
 const colorPickerLabel = document.getElementById('color_picker_label');
 
+const statusEraser = document.getElementById('status_eraser');
+
 let color = '#333333';
-let drawing = false;
+let click = false;
+let erasing = false;
 
 let curX, curY;
 let lastX, lastY;
 
 // drawing event
-const drawEvent = evt => {
+const drawEvent = (evt, moving = false) => {
   // figure out where it happened
   // floored for extra scribbly
   const rect = canvas.getBoundingClientRect();
@@ -36,13 +39,13 @@ const drawEvent = evt => {
   curY = y;
 
   // draw a line if all four coordinates exist
-  if (lastX && lastY && curX && curY && drawing) {
+  if (lastX && lastY && curX && curY && moving) {
     bresenham(lastX, lastY, curX, curY, (fx, fy) => draw(fx, fy));
   }
 };
 
 const draw = (x, y) => {
-  ctx.fillStyle = (drawing ? color : 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = erasing ? '#fff' : color;
   ctx.fillRect(x, y, 5, 5);
 };
 
@@ -51,16 +54,40 @@ colorPicker.addEventListener('change', evt => {
   colorPickerLabel.style.background = evt.target.value;
 }, false);
 
+const updateStatusEraser = () => {
+  if (erasing) {
+    statusEraser.classList.replace('neg', 'pos');
+  } else {
+    statusEraser.classList.replace('pos', 'neg');
+  }
+  statusEraser.innerHTML = (erasing ? 'active' : 'inactive');
+};
+
 // browser events
 document.onmousedown = evt => {
-  drawing = true;
+  click = true;
   drawEvent(evt);
 };
 
 document.onmousemove = evt => {
-  drawEvent(evt);
+  if (click) {
+    drawEvent(evt, true);
+  }
 };
 
 document.onmouseup = evt => {
-  drawing = false;
+  click = false;
+};
+
+document.onkeydown = evt => {
+  switch (evt.key) {
+    case 'b':
+      erasing = false;
+      updateStatusEraser();
+      break;
+    case 'e':
+      erasing = true;
+      updateStatusEraser();
+      break;
+  }
 };

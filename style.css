@@ -26,6 +26,11 @@ h1 {
   font-weight:400
 }
 
+p {
+  font-size:0.75rem;
+  line-height:1.1
+}
+
 a {
   text-decoration:none;
   color:#22a
@@ -36,12 +41,7 @@ a:hover {
 }
 
 footer {
-  font-size:0.75rem;
   text-align:center
-}
-
-footer p {
-  line-height:1.2
 }
 
 canvas {
@@ -57,6 +57,14 @@ canvas {
   align-items:center
 }
 
+#wrapper_controls {
+  display:flex
+}
+
+#wrapper_controls_right {
+  margin-left:auto
+}
+
 #color_picker_label {
   display:block;
   box-shadow:0 2px 3px #99e;
@@ -67,4 +75,12 @@ canvas {
 
 #color_picker {
   visibility:hidden
+}
+
+.pos {
+  color:#080
+}
+
+.neg {
+  color:#800
 }
