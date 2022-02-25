@@ -1,0 +1,22 @@
+* {
+  margin:0;
+  border:0;
+  padding:0;
+  box-sizing:border-box
+}
+
+body {
+  background:#bbe;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+  color:#444;
+  line-height:1.4;
+  padding:8px
+}
+
+h1 {
+  font-weight:400
+}
+
+small {
+  font-size:80%
+}
