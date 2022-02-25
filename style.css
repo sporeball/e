@@ -45,6 +45,8 @@ footer p {
 }
 
 canvas {
+  display:block;
+  margin-bottom:1rem;
   box-shadow:0 4px 6px #99e;
   background:#fff
 }
@@ -53,4 +55,16 @@ canvas {
   flex-direction:column;
   display:flex;
   align-items:center
+}
+
+#color_picker_label {
+  display:block;
+  box-shadow:0 2px 3px #99e;
+  width:24px;
+  height:24px;
+  background:#333333
+}
+
+#color_picker {
+  visibility:hidden
 }

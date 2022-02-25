@@ -9,6 +9,10 @@ import bresenham from './lib/bresenham.js';
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
+const colorPicker = document.getElementById('color_picker');
+const colorPickerLabel = document.getElementById('color_picker_label');
+
+let color = '#333333';
 let drawing = false;
 
 let curX, curY;
@@ -38,9 +42,14 @@ const drawEvent = evt => {
 };
 
 const draw = (x, y) => {
-  ctx.fillStyle = (drawing ? '#333' : 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = (drawing ? color : 'rgba(0, 0, 0, 0)');
   ctx.fillRect(x, y, 5, 5);
 };
+
+colorPicker.addEventListener('change', evt => {
+  color = evt.target.value;
+  colorPickerLabel.style.background = evt.target.value;
+}, false);
 
 // browser events
 document.onmousedown = evt => {
