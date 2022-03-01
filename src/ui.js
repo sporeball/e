@@ -20,7 +20,7 @@ const statusEraser = document.getElementById('status_eraser');
  * @public
  */
 const init = () => {
-  colorPicker.addEventListener('change', colorPickerChange, false);
+  colorPicker.addEventListener('input', colorPickerChange, false);
 };
 
 /**
@@ -37,7 +37,7 @@ const updateEraser = () => {
 };
 
 /**
- * fires when the color picker is dismissed
+ * fires when the color picker changes
  */
 const colorPickerChange = evt => {
   e.color = evt.target.value;
