@@ -6,6 +6,7 @@
 */
 
 import e from '../e.js';
+import Canvas from './canvas.js';
 
 // the color picker input itself
 const colorPicker = document.getElementById('color_picker');
@@ -42,6 +43,7 @@ const updateEraser = () => {
 const colorPickerChange = evt => {
   e.color = evt.target.value;
   colorPickerLabel.style.background = evt.target.value;
+  Canvas.canvas.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23${evt.target.value.slice(1)}" height="6" width="6"><path d="M 1 1 H 6 V 6 H 1 Z"/></svg>'), auto`;
 };
 
 export default {

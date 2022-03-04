@@ -47,5 +47,7 @@ const draw = (x, y) => {
 };
 
 export default {
+  canvas,
+  ctx,
   drawEvent
 };
