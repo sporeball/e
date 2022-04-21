@@ -38,12 +38,8 @@ const mouseup = evt => {
 
 const keydown = evt => {
   switch (evt.key) {
-    case 'b':
-      e.erasing = false;
-      UI.updateEraser();
-      break;
     case 'e':
-      e.erasing = true;
+      e.erasing = !(e.erasing);
       UI.updateEraser();
       break;
   }
