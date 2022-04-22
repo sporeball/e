@@ -14,10 +14,13 @@ import UI from './ui.js';
  * @public
  */
 const init = () => {
-  document.addEventListener('mousedown', mousedown);
-  document.addEventListener('mousemove', mousemove);
-  document.addEventListener('mouseup', mouseup);
+  Canvas.canvas.addEventListener('mousedown', mousedown);
+  Canvas.canvas.addEventListener('mousemove', mousemove);
+  Canvas.canvas.addEventListener('mouseup', mouseup);
+  Canvas.canvas.addEventListener('mouseout', mouseup); // do the same thing
+
   document.addEventListener('keydown', keydown);
+
   // prompt before exiting...
   window.addEventListener('beforeunload', evt => {
     evt.preventDefault(); // ...in Firefox
