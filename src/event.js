@@ -18,6 +18,11 @@ const init = () => {
   document.addEventListener('mousemove', mousemove);
   document.addEventListener('mouseup', mouseup);
   document.addEventListener('keydown', keydown);
+  // prompt before exiting...
+  window.addEventListener('beforeunload', evt => {
+    evt.preventDefault(); // ...in Firefox
+    evt.returnValue = ''; // ...in Chrome
+  });
 };
 
 // browser events here
