@@ -45,17 +45,35 @@ footer {
 }
 
 canvas {
-  display:block;
-  margin-bottom:1rem;
-  box-shadow:0 4px 6px #99e;
-  background:#fff;
+  display:block
+}
+
+#layer_pseudo {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333333" height="6" width="6"><path d="M 1 1 H 6 V 6 H 1 Z"/></svg>'), auto
+}
+
+#layer_bg {
+  box-shadow:0 4px 6px #99e;
+  background:#fff
 }
 
 #wrapper {
   flex-direction:column;
   display:flex;
   align-items:center
+}
+
+#wrapper_layers {
+  position:relative;
+  width:400px;
+  height:400px;
+  margin-bottom:1rem
+}
+
+#wrapper_layers canvas {
+  position:absolute;
+  top:0;
+  left:0
 }
 
 #wrapper_controls {

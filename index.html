@@ -15,7 +15,14 @@
             絵 <rp>(</rp><rt>e</rt><rp>)</rp>
           </ruby>
         </h1>
-        <canvas id="canvas" width="400" height="400" oncontextmenu="return false"></canvas>
+        <div id="wrapper_layers">
+          <canvas id="layer_pseudo" style="z-index:10" width="400" height="400" oncontextmenu="return false"></canvas>
+          <canvas id="layer_1" style="z-index:4" width="400" height="400"></canvas>
+          <canvas id="layer_2" style="z-index:3" width="400" height="400"></canvas>
+          <canvas id="layer_3" style="z-index:2" width="400" height="400"></canvas>
+          <canvas id="layer_4" style="z-index:1" width="400" height="400"></canvas>
+          <canvas id="layer_bg" style="z-index:0" width="400" height="400"></canvas>
+        </div>
         <div id="wrapper_controls">
           <div id="wrapper_controls_left">
             <label id="color_picker_label">
@@ -30,7 +37,7 @@
       </main>
       <footer>
         <p><small>(c) 2022 <a href="https://sporeball.dev" target="_blank">sporeball</a></small></p>
-        <p><small>this is the <a href="https://github.com/sporeball/e/commits/master" target="_blank">15th commit</a></small></p>
+        <p><small>this is the <a href="https://github.com/sporeball/e/commits/master" target="_blank">16th commit</a></small></p>
       </footer>
     </div>
     <script type="module" src="e.js"></script>

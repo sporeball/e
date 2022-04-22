@@ -8,8 +8,15 @@
 import e from '../e.js';
 import bresenham from '../lib/bresenham.js';
 
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
+const layerPseudo = document.getElementById('layer_pseudo');
+
+const canvas = (layer = e.layer) => {
+  return document.getElementById(`layer_${layer}`);
+};
+
+const ctx = (layer = e.layer) => {
+  return canvas(layer).getContext('2d');
+};
 
 /**
  * drawing event
@@ -18,7 +25,7 @@ const ctx = canvas.getContext('2d');
 const drawEvent = (evt, moving = false) => {
   // figure out where it happened
   // floored for extra scribbly
-  const rect = canvas.getBoundingClientRect();
+  const rect = canvas().getBoundingClientRect();
   const x = Math.floor(evt.clientX - rect.left);
   const y = Math.floor(evt.clientY - rect.top);
   // draw
@@ -42,12 +49,14 @@ const drawEvent = (evt, moving = false) => {
  * this is the one that actually changes the canvas
  */
 const draw = (x, y) => {
-  ctx.fillStyle = e.color;
-  ctx.globalCompositeOperation = e.erasing ? 'destination-out' : 'source-over';
-  ctx.fillRect(x, y, 5, 5);
+  const curCtx = ctx();
+  curCtx.fillStyle = e.color;
+  curCtx.globalCompositeOperation = e.erasing ? 'destination-out' : 'source-over';
+  curCtx.fillRect(x, y, 5, 5);
 };
 
 export default {
+  layerPseudo,
   canvas,
   ctx,
   drawEvent

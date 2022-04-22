@@ -14,10 +14,10 @@ import UI from './ui.js';
  * @public
  */
 const init = () => {
-  Canvas.canvas.addEventListener('mousedown', mousedown);
-  Canvas.canvas.addEventListener('mousemove', mousemove);
-  Canvas.canvas.addEventListener('mouseup', mouseup);
-  Canvas.canvas.addEventListener('mouseout', mouseup); // do the same thing
+  Canvas.layerPseudo.addEventListener('mousedown', mousedown);
+  Canvas.layerPseudo.addEventListener('mousemove', mousemove);
+  Canvas.layerPseudo.addEventListener('mouseup', mouseup);
+  Canvas.layerPseudo.addEventListener('mouseout', mouseup); // do the same thing
 
   document.addEventListener('keydown', keydown);
 
