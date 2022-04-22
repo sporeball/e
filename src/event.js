@@ -28,7 +28,9 @@ const init = () => {
   });
 };
 
-// browser events here
+/**
+ * mouse events
+ */
 const mousedown = evt => {
   e.click = true;
   Canvas.drawEvent(evt);
@@ -44,8 +46,20 @@ const mouseup = evt => {
   e.click = false;
 };
 
+/**
+ * keyboard events
+ */
 const keydown = evt => {
   switch (evt.key) {
+    // switch current layer
+    case '1':
+    case '2':
+    case '3':
+    case '4':
+      e.layer = Number(evt.key);
+      UI.updateLayer();
+      break;
+    // toggle eraser
     case 'e':
       e.erasing = !(e.erasing);
       UI.updateEraser();

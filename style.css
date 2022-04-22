@@ -63,7 +63,8 @@ canvas {
 }
 
 #wrapper_controls_right {
-  margin-left:auto
+  margin-left:auto;
+  text-align:left
 }
 
 #color_picker_label {

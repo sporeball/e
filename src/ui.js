@@ -9,12 +9,14 @@ import e from '../e.js';
 import Canvas from './canvas.js';
 
 // the color picker input itself
+// (receives event, but is invisible)
 const colorPicker = document.getElementById('color_picker');
 // the square that shows its current color
 const colorPickerLabel = document.getElementById('color_picker_label');
 
 // status text
 const statusEraser = document.getElementById('status_eraser');
+const statusLayer = document.getElementById('status_layer');
 
 /**
  * register event listeners
@@ -38,7 +40,16 @@ const updateEraser = () => {
 };
 
 /**
+ * update layer text
+ * @public
+ */
+const updateLayer = () => {
+  statusLayer.innerHTML = e.layer;
+};
+
+/**
  * fires when the color picker changes
+ * @private
  */
 const colorPickerChange = evt => {
   e.color = evt.target.value;
@@ -48,5 +59,6 @@ const colorPickerChange = evt => {
 
 export default {
   init,
-  updateEraser
+  updateEraser,
+  updateLayer
 };

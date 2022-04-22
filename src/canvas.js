@@ -42,7 +42,8 @@ const drawEvent = (evt, moving = false) => {
  * this is the one that actually changes the canvas
  */
 const draw = (x, y) => {
-  ctx.fillStyle = e.erasing ? '#fff' : e.color;
+  ctx.fillStyle = e.color;
+  ctx.globalCompositeOperation = e.erasing ? 'destination-out' : 'source-over';
   ctx.fillRect(x, y, 5, 5);
 };
 
