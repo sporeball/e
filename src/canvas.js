@@ -8,31 +8,18 @@
 import e from '../e.js';
 import bresenham from '../lib/bresenham.js';
 
-// this topmost "layer" shows a preview of the current numbered layer
+// preview of the current numbered layer
 const layerPreview = document.getElementById('layer_preview');
 
-// this layer exists only to receive mouse events
-// it otherwise stays completely empty
+// this layer is placed directly above the numbered layers
+// it exists only to receive mouse events
 const layerPseudo = document.getElementById('layer_pseudo');
 
 /**
- * get the canvas tied to a numbered layer
- * @param {number} [layer]
- */
-const canvas = (layer = e.layer) => {
-  return document.getElementById(`layer_${layer}`);
-};
-
-/**
- * get the context of the canvas tied to a numbered layer
- * @param {number} [layer]
- */
-const ctx = (layer = e.layer) => {
-  return canvas(layer).getContext('2d');
-};
-
-/**
  * drawing event
+ * @param {MouseEvent} evt
+ * @param {boolean} [moving] whether the cursor is moving.
+ *   if true, lines will be drawn to fill any gaps
  * @public
  */
 const drawEvent = (evt, moving = false) => {
@@ -60,6 +47,7 @@ const drawEvent = (evt, moving = false) => {
 /**
  * draw function
  * this is the one that actually changes the canvas
+ * @private
  */
 const draw = (x, y) => {
   const curCtx = ctx();
@@ -68,10 +56,29 @@ const draw = (x, y) => {
   curCtx.fillRect(x, y, 5, 5);
 };
 
+/**
+ * get the canvas tied to a numbered layer
+ * @param {number} [layer]
+ * @public
+ */
+const canvas = (layer = e.layer) => {
+  return document.getElementById(`layer_${layer}`);
+};
+
+/**
+ * get the context of the canvas tied to a numbered layer
+ * @param {number} [layer]
+ * @public
+ */
+const ctx = (layer = e.layer) => {
+  return canvas(layer).getContext('2d');
+};
+
+
 export default {
   layerPreview,
   layerPseudo,
+  drawEvent,
   canvas,
-  ctx,
-  drawEvent
+  ctx
 };

@@ -7,6 +7,7 @@
 import Event from './src/event.js';
 import UI from './src/ui.js';
 
+// state
 const layer = 1;
 const color = '#333333';
 const click = false;
@@ -15,8 +16,11 @@ const erasing = false;
 let curX, curY;
 let prevX, prevY;
 
-Event.init(); // core events only
-UI.init();
+// initialization...
+Event.init(); // core events
+UI.init(); // other events
+
+// should be good to go
 
 export default {
   layer,

@@ -32,8 +32,8 @@ const init = () => {
  */
 const updatePreview = () => {
   const ctx = Canvas.layerPreview.getContext('2d');
-  Canvas.layerPreview.width = 50; // clear preview
-  ctx.drawImage(Canvas.canvas(), 0, 0, 50, 50);
+  Canvas.layerPreview.width = 50; // clear
+  ctx.drawImage(Canvas.canvas(), 0, 0, 50, 50); // redraw
 };
 
 /**
