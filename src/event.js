@@ -44,6 +44,7 @@ const mousemove = evt => {
 
 const mouseup = evt => {
   e.click = false;
+  UI.updatePreview();
 };
 
 /**
@@ -58,6 +59,7 @@ const keydown = evt => {
     case '4':
       e.layer = Number(evt.key);
       UI.updateLayer();
+      UI.updatePreview();
       break;
     // toggle eraser
     case 'e':

@@ -8,12 +8,25 @@
 import e from '../e.js';
 import bresenham from '../lib/bresenham.js';
 
+// this topmost "layer" shows a preview of the current numbered layer
+const layerPreview = document.getElementById('layer_preview');
+
+// this layer exists only to receive mouse events
+// it otherwise stays completely empty
 const layerPseudo = document.getElementById('layer_pseudo');
 
+/**
+ * get the canvas tied to a numbered layer
+ * @param {number} [layer]
+ */
 const canvas = (layer = e.layer) => {
   return document.getElementById(`layer_${layer}`);
 };
 
+/**
+ * get the context of the canvas tied to a numbered layer
+ * @param {number} [layer]
+ */
 const ctx = (layer = e.layer) => {
   return canvas(layer).getContext('2d');
 };
@@ -56,6 +69,7 @@ const draw = (x, y) => {
 };
 
 export default {
+  layerPreview,
   layerPseudo,
   canvas,
   ctx,

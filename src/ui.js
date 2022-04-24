@@ -27,6 +27,16 @@ const init = () => {
 };
 
 /**
+ * update the layer preview
+ * @public
+ */
+const updatePreview = () => {
+  const ctx = Canvas.layerPreview.getContext('2d');
+  Canvas.layerPreview.width = 50; // clear preview
+  ctx.drawImage(Canvas.canvas(), 0, 0, 50, 50);
+};
+
+/**
  * update eraser text
  * @public
  */
@@ -59,6 +69,7 @@ const colorPickerChange = evt => {
 
 export default {
   init,
+  updatePreview,
   updateEraser,
   updateLayer
 };

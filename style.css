@@ -48,11 +48,23 @@ canvas {
   display:block
 }
 
+#layer_preview {
+  position:absolute;
+  top:20px;
+  left:330px
+}
+
+#layer_pseudo, #layer_1, #layer_2, #layer_3, #layer_4, #layer_bg {
+  position:absolute;
+  top:0;
+  left:0
+}
+
 #layer_pseudo {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333333" height="6" width="6"><path d="M 1 1 H 6 V 6 H 1 Z"/></svg>'), auto
 }
 
-#layer_bg {
+#layer_preview, #layer_bg {
   box-shadow:0 4px 6px #99e;
   background:#fff
 }
@@ -68,12 +80,6 @@ canvas {
   width:400px;
   height:400px;
   margin-bottom:1rem
-}
-
-#wrapper_layers canvas {
-  position:absolute;
-  top:0;
-  left:0
 }
 
 #wrapper_controls {
