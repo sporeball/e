@@ -12,6 +12,7 @@ const layer = 1;
 const color = '#333333';
 const click = false;
 const erasing = false;
+const focus = false;
 
 let curX, curY;
 let prevX, prevY;
@@ -27,6 +28,7 @@ export default {
   color,
   click,
   erasing,
+  focus,
   curX,
   curY,
   prevX,

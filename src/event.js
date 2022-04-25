@@ -51,6 +51,9 @@ const mouseup = evt => {
  * keyboard events
  */
 const keydown = evt => {
+  if (e.click) {
+    return;
+  }
   switch (evt.key) {
     // switch current layer
     case '1':
@@ -65,6 +68,11 @@ const keydown = evt => {
     case 'e':
       e.erasing = !(e.erasing);
       UI.updateEraser();
+      break;
+    // focus mode
+    case 'f':
+      e.focus = !(e.focus);
+      UI.toggleFocusMode();
       break;
   }
 };

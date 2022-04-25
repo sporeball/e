@@ -8,6 +8,10 @@
 import e from '../e.js';
 import Canvas from './canvas.js';
 
+// header and footer
+const header = document.getElementById('header');
+const footer = document.getElementById('footer');
+
 // the color picker input itself
 // (receives event, but is invisible)
 const colorPicker = document.getElementById('color_picker');
@@ -15,8 +19,9 @@ const colorPicker = document.getElementById('color_picker');
 const colorPickerLabel = document.getElementById('color_picker_label');
 
 // status text
-const statusEraser = document.getElementById('status_eraser');
 const statusLayer = document.getElementById('status_layer');
+const statusEraser = document.getElementById('status_eraser');
+const statusFocus = document.getElementById('status_focus');
 
 /**
  * register event listeners
@@ -58,6 +63,23 @@ const updateLayer = () => {
 };
 
 /**
+ * toggle focus mode (hide unimportant elements)
+ * @public
+ */
+const toggleFocusMode = () => {
+  if (e.focus) {
+    statusFocus.classList.replace('neg', 'pos');
+    header.style.visibility = 'hidden';
+    footer.style.display = 'none';
+  } else {
+    statusFocus.classList.replace('pos', 'neg');
+    header.style.visibility = 'visible';
+    footer.style.display = 'block';
+  }
+  statusFocus.innerHTML = (e.focus ? 'active' : 'inactive');
+};
+
+/**
  * fires when the color picker changes
  * @private
  */
@@ -70,6 +92,7 @@ const colorPickerChange = evt => {
 export default {
   init,
   updatePreview,
+  updateLayer,
   updateEraser,
-  updateLayer
+  toggleFocusMode
 };
