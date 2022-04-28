@@ -45,7 +45,8 @@ footer {
 }
 
 canvas {
-  display:block
+  display:block;
+  touch-action:none
 }
 
 #layer_preview {

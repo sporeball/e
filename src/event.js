@@ -14,10 +14,10 @@ import UI from './ui.js';
  * @public
  */
 const init = () => {
-  Canvas.layerPseudo.addEventListener('mousedown', mousedown);
-  Canvas.layerPseudo.addEventListener('mousemove', mousemove);
-  Canvas.layerPseudo.addEventListener('mouseup', mouseup);
-  Canvas.layerPseudo.addEventListener('mouseout', mouseup); // do the same thing
+  Canvas.layerPseudo.addEventListener('pointerdown', pointerdown);
+  Canvas.layerPseudo.addEventListener('pointermove', pointermove);
+  Canvas.layerPseudo.addEventListener('pointerup', pointerup);
+  Canvas.layerPseudo.addEventListener('pointerout', pointerup); // do the same thing
 
   document.addEventListener('keydown', keydown);
 
@@ -31,18 +31,18 @@ const init = () => {
 /**
  * mouse events
  */
-const mousedown = evt => {
+const pointerdown = evt => {
   e.click = true;
   Canvas.drawEvent(evt);
 };
 
-const mousemove = evt => {
+const pointermove = evt => {
   if (e.click) {
     Canvas.drawEvent(evt, true);
   }
 };
 
-const mouseup = evt => {
+const pointerup = evt => {
   e.click = false;
   UI.updatePreview();
 };
