@@ -10,12 +10,14 @@
   </head>
   <body>
     <div id="wrapper">
-      <main>
-        <h1 id="header">
+      <header id="header">
+        <h1>
           <ruby>
             絵 <rp>(</rp><rt>e</rt><rp>)</rp>
           </ruby>
         </h1>
+      </header>
+      <main>
         <div id="wrapper_layers">
           <canvas id="layer_preview" style="z-index:99" width="50" height="50" oncontextmenu="return false"></canvas>
           <canvas id="layer_pseudo" style="z-index:10" width="400" height="400" oncontextmenu="return false"></canvas>
@@ -32,15 +34,15 @@
             </label>
           </div>
           <div id="wrapper_controls_right">
-            <p><small>(1234) layer: <span id="status_layer">1</span></small></p>
-            <p><small>(E) eraser: <span id="status_eraser" class="neg">inactive</span></small></p>
-            <p><small>(F) focus: <span id="status_focus" class="neg">inactive</span></small></p>
+            <p>(1234) layer: <span id="status_layer">1</span></p>
+            <p>(E) eraser: <span id="status_eraser" class="neg">off</span></p>
+            <p>(F) focus: <span id="status_focus" class="neg">off</span></p>
           </div>
         </div>
       </main>
       <footer id="footer">
-        <p><small>(c) 2022 <a href="https://sporeball.dev" target="_blank">sporeball</a></small></p>
-        <p><small>this is the <a href="https://github.com/sporeball/e/commits/master" target="_blank">21st commit</a></small></p>
+        <p>(c) 2022 <a href="https://sporeball.dev" target="_blank">sporeball</a></p>
+        <p>this is the <a href="https://github.com/sporeball/e/commits/master" target="_blank">22nd commit</a></p>
       </footer>
     </div>
     <script type="module" src="e.js"></script>

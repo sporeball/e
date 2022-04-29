@@ -6,19 +6,15 @@
 }
 
 body {
-  margin:auto;
-  max-width:800px;
   padding:1rem;
   background:#bbe;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
-  line-height:1.4;
   text-shadow:0px 3px 2px #99e;
   color:#444
 }
 
 main {
-  margin-bottom:4rem;
-  text-align:center
+  margin-bottom:2rem
 }
 
 h1 {
@@ -27,8 +23,8 @@ h1 {
 }
 
 p {
-  font-size:0.75rem;
-  line-height:1.1
+  font-size:0.62rem;
+  line-height:1.4
 }
 
 a {
@@ -40,47 +36,26 @@ a:hover {
   text-decoration:underline
 }
 
-footer {
-  text-align:center
-}
-
 canvas {
-  display:block;
-  touch-action:none
-}
-
-#layer_preview {
-  position:absolute;
-  top:20px;
-  left:330px
-}
-
-#layer_pseudo, #layer_1, #layer_2, #layer_3, #layer_4, #layer_bg {
   position:absolute;
   top:0;
-  left:0
-}
-
-#layer_pseudo {
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333333" height="6" width="6"><path d="M 1 1 H 6 V 6 H 1 Z"/></svg>'), auto
-}
-
-#layer_preview, #layer_bg {
-  box-shadow:0 4px 6px #99e;
-  background:#fff
+  left:0;
+  display:block;
+  touch-action:none
 }
 
 #wrapper {
   flex-direction:column;
   display:flex;
+  text-align:center;
   align-items:center
 }
 
 #wrapper_layers {
   position:relative;
+  margin-bottom:1rem;
   width:400px;
-  height:400px;
-  margin-bottom:1rem
+  height:400px
 }
 
 #wrapper_controls {
@@ -92,16 +67,30 @@ canvas {
   text-align:left
 }
 
+#layer_preview, #layer_bg {
+  box-shadow:0 4px 6px #99e;
+  background:#fff
+}
+
+#layer_preview {
+  top:20px;
+  left:330px
+}
+
+#layer_pseudo {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333333" height="6" width="6"><path d="M 1 1 H 6 V 6 H 1 Z"/></svg>'), auto
+}
+
+#color_picker {
+  visibility:hidden
+}
+
 #color_picker_label {
   display:block;
   box-shadow:0 2px 3px #99e;
   width:24px;
   height:24px;
   background:#333333
-}
-
-#color_picker {
-  visibility:hidden
 }
 
 .pos {

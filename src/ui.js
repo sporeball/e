@@ -51,7 +51,7 @@ const updateEraser = () => {
   } else {
     statusEraser.classList.replace('pos', 'neg');
   }
-  statusEraser.innerHTML = (e.erasing ? 'active' : 'inactive');
+  statusEraser.innerHTML = (e.erasing ? 'on' : 'off');
 };
 
 /**
@@ -76,7 +76,7 @@ const toggleFocusMode = () => {
     header.style.visibility = 'visible';
     footer.style.display = 'block';
   }
-  statusFocus.innerHTML = (e.focus ? 'active' : 'inactive');
+  statusFocus.innerHTML = (e.focus ? 'on' : 'off');
 };
 
 /**
