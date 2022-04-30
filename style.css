@@ -62,11 +62,6 @@ canvas {
   display:flex
 }
 
-#wrapper_controls_right {
-  margin-left:auto;
-  text-align:left
-}
-
 #layer_preview, #layer_bg {
   box-shadow:0 4px 6px #99e;
   background:#fff
@@ -87,10 +82,16 @@ canvas {
 
 #color_picker_label {
   display:block;
+  margin-right:auto;
   box-shadow:0 2px 3px #99e;
   width:24px;
   height:24px;
   background:#333333
+}
+
+.controls_group {
+  margin-left:1rem;
+  text-align:left
 }
 
 .pos {
