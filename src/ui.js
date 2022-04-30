@@ -86,7 +86,7 @@ const toggleFocusMode = () => {
 const colorPickerChange = evt => {
   e.color = evt.target.value;
   colorPickerLabel.style.background = evt.target.value;
-  Canvas.layerPseudo.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23${evt.target.value.slice(1)}" height="6" width="6"><path d="M 1 1 H 6 V 6 H 1 Z"/></svg>'), auto`;
+  Canvas.layerPseudo.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="7" width="7"><path d="M0,0H7V7H0Z"/><path d="M1,1H6V6H1Z" fill="%23${evt.target.value.slice(1)}"/></svg>'), auto`;
 };
 
 export default {
