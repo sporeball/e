@@ -10,9 +10,11 @@ import UI from './src/ui.js';
 // state
 const layer = 1;
 const color = '#333333';
+
 const click = false;
 const erasing = false;
 const focus = false;
+const previewEnabled = true;
 
 let curX, curY;
 let prevX, prevY;
@@ -29,6 +31,7 @@ export default {
   click,
   erasing,
   focus,
+  previewEnabled,
   curX,
   curY,
   prevX,

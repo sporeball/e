@@ -22,6 +22,7 @@ const colorPickerLabel = document.getElementById('color_picker_label');
 const statusLayer = document.getElementById('status_layer');
 const statusEraser = document.getElementById('status_eraser');
 const statusFocus = document.getElementById('status_focus');
+const statusPreview = document.getElementById('status_preview');
 
 /**
  * register event listeners
@@ -31,52 +32,68 @@ const init = () => {
   colorPicker.addEventListener('input', colorPickerChange, false);
 };
 
-/**
- * update the layer preview
- * @public
- */
-const updatePreview = () => {
-  const ctx = Canvas.layerPreview.getContext('2d');
-  Canvas.layerPreview.width = 50; // clear
-  ctx.drawImage(Canvas.canvas(), 0, 0, 50, 50); // redraw
-};
-
-/**
- * update eraser text
- * @public
- */
-const updateEraser = () => {
-  if (e.erasing) {
-    statusEraser.classList.replace('neg', 'pos');
-  } else {
-    statusEraser.classList.replace('pos', 'neg');
-  }
-  statusEraser.innerHTML = (e.erasing ? 'on' : 'off');
-};
+// simple methods below
 
 /**
  * update layer text
+ * on: 1234
  * @public
  */
-const updateLayer = () => {
+const updateLayerText = () => {
   statusLayer.innerHTML = e.layer;
 };
 
 /**
+ * update eraser text
+ * on: E
+ * @public
+ */
+const updateEraserText = () => {
+  statusEraser.innerHTML = (e.erasing ? 'on' : 'off');
+  statusEraser.className = (e.erasing ? 'pos' : 'neg');
+};
+
+// advanced methods below
+
+/**
+ * redraw the layer preview
+ * on: pointerup / pointerout / 1234
+ * @public
+ */
+const updateLayerPreview = () => {
+  const ctx = Canvas.layerPreview.getContext('2d');
+  // clear
+  Canvas.layerPreview.width = 50;
+  // redraw
+  ctx.drawImage(Canvas.canvas(), 0, 0, 50, 50);
+};
+
+/**
+ * toggle the layer preview on and off
+ * on: P
+ * @public
+ */
+const toggleLayerPreview = () => {
+  Canvas.layerPreview.style.display = (e.previewEnabled ? 'block' : 'none');
+  statusPreview.innerHTML = (e.previewEnabled ? 'on' : 'off');
+  statusPreview.className = (e.previewEnabled ? 'pos' : 'neg');
+};
+
+/**
  * toggle focus mode (hide unimportant elements)
+ * on: F
  * @public
  */
 const toggleFocusMode = () => {
   if (e.focus) {
-    statusFocus.classList.replace('neg', 'pos');
     header.style.visibility = 'hidden';
     footer.style.display = 'none';
   } else {
-    statusFocus.classList.replace('pos', 'neg');
     header.style.visibility = 'visible';
     footer.style.display = 'block';
   }
   statusFocus.innerHTML = (e.focus ? 'on' : 'off');
+  statusFocus.className = (e.focus ? 'pos' : 'neg');
 };
 
 /**
@@ -91,8 +108,9 @@ const colorPickerChange = evt => {
 
 export default {
   init,
-  updatePreview,
-  updateLayer,
-  updateEraser,
+  updateLayerText,
+  updateEraserText,
+  updateLayerPreview,
+  toggleLayerPreview,
   toggleFocusMode
 };

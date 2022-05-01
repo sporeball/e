@@ -44,7 +44,7 @@ const pointermove = evt => {
 
 const pointerup = evt => {
   e.click = false;
-  UI.updatePreview();
+  UI.updateLayerPreview();
 };
 
 /**
@@ -61,18 +61,23 @@ const keydown = evt => {
     case '3':
     case '4':
       e.layer = Number(evt.key);
-      UI.updateLayer();
-      UI.updatePreview();
+      UI.updateLayerText();
+      UI.updateLayerPreview();
       break;
     // toggle eraser
     case 'e':
       e.erasing = !(e.erasing);
-      UI.updateEraser();
+      UI.updateEraserText();
       break;
     // focus mode
     case 'f':
       e.focus = !(e.focus);
       UI.toggleFocusMode();
+      break;
+    // toggle layer preview
+    case 'p':
+      e.previewEnabled = !(e.previewEnabled);
+      UI.toggleLayerPreview();
       break;
   }
 };
