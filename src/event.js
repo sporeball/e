@@ -13,7 +13,7 @@ import UI from './ui.js';
  * register event listeners
  * @public
  */
-const init = () => {
+function init () {
   Canvas.layerPseudo.addEventListener('pointerdown', pointerdown);
   Canvas.layerPseudo.addEventListener('pointermove', pointermove);
   Canvas.layerPseudo.addEventListener('pointerup', pointerup);
@@ -26,31 +26,31 @@ const init = () => {
     evt.preventDefault(); // ...in Firefox
     evt.returnValue = ''; // ...in Chrome
   });
-};
+}
 
 /**
  * mouse events
  */
-const pointerdown = evt => {
+function pointerdown (evt) {
   e.click = true;
   Canvas.drawEvent(evt);
-};
+}
 
-const pointermove = evt => {
+function pointermove (evt) {
   if (e.click) {
     Canvas.drawEvent(evt, true);
   }
-};
+}
 
-const pointerup = evt => {
+function pointerup (evt) {
   e.click = false;
   UI.updateLayerPreview();
-};
+}
 
 /**
  * keyboard events
  */
-const keydown = evt => {
+function keydown (evt) {
   if (e.click) {
     return;
   }
@@ -80,7 +80,7 @@ const keydown = evt => {
       UI.toggleLayerPreview();
       break;
   }
-};
+}
 
 export default {
   init

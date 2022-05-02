@@ -22,10 +22,10 @@ const layerPseudo = document.getElementById('layer_pseudo');
  *   if true, lines will be drawn to fill any gaps
  * @public
  */
-const drawEvent = (evt, moving = false) => {
+function drawEvent (evt, moving = false) {
   // figure out where it happened
   // floored for extra scribbly
-  const rect = canvas().getBoundingClientRect();
+  const rect = getCanvas().getBoundingClientRect();
   const x = Math.floor(evt.clientX - rect.left);
   const y = Math.floor(evt.clientY - rect.top);
   // draw
@@ -42,43 +42,42 @@ const drawEvent = (evt, moving = false) => {
   if (e.prevX && e.prevY && e.curX && e.curY && moving) {
     bresenham(e.prevX, e.prevY, e.curX, e.curY, (fx, fy) => draw(fx, fy));
   }
-};
+}
 
 /**
  * draw function
  * this is the one that actually changes the canvas
  * @private
  */
-const draw = (x, y) => {
-  const curCtx = ctx();
-  curCtx.fillStyle = e.color;
-  curCtx.globalCompositeOperation = e.erasing ? 'destination-out' : 'source-over';
-  curCtx.fillRect(x, y, 5, 5);
-};
+function draw (x, y) {
+  const ctx = getCtx();
+  ctx.fillStyle = e.color;
+  ctx.globalCompositeOperation = e.erasing ? 'destination-out' : 'source-over';
+  ctx.fillRect(x, y, 5, 5);
+}
 
 /**
  * get the canvas tied to a numbered layer
  * @param {number} [layer]
  * @public
  */
-const canvas = (layer = e.layer) => {
+function getCanvas (layer = e.layer) {
   return document.getElementById(`layer_${layer}`);
-};
+}
 
 /**
  * get the context of the canvas tied to a numbered layer
  * @param {number} [layer]
  * @public
  */
-const ctx = (layer = e.layer) => {
-  return canvas(layer).getContext('2d');
-};
-
+function getCtx (layer = e.layer) {
+  return getCanvas(layer).getContext('2d');
+}
 
 export default {
   layerPreview,
   layerPseudo,
   drawEvent,
-  canvas,
-  ctx
+  getCanvas,
+  getCtx
 };
