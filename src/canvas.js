@@ -11,7 +11,11 @@ import bresenham from '../lib/bresenham.js';
 // preview of the current numbered layer
 const layerPreview = document.getElementById('layer_preview');
 
-// this layer is placed directly above the numbered layers
+// this layer is completely private
+// when saving, the numbered layers will be composited here
+const layerComposite = document.getElementById('layer_composite');
+
+// this layer is placed above the numbered layers
 // it exists only to receive mouse events
 const layerPseudo = document.getElementById('layer_pseudo');
 
@@ -76,6 +80,7 @@ function getCtx (layer = e.layer) {
 
 export default {
   layerPreview,
+  layerComposite,
   layerPseudo,
   drawEvent,
   getCanvas,

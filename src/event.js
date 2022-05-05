@@ -7,6 +7,7 @@
 
 import e from '../e.js';
 import Canvas from './canvas.js';
+import IO from './io.js';
 import UI from './ui.js';
 
 /**
@@ -78,6 +79,12 @@ function keydown (evt) {
     case 'p':
       e.previewEnabled = !(e.previewEnabled);
       UI.toggleLayerPreview();
+      break;
+    case 's':
+      if (evt.ctrlKey) {
+        evt.preventDefault();
+        IO.save();
+      }
       break;
   }
 }
