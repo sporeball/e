@@ -10,14 +10,20 @@ import bresenham from '../lib/bresenham.js';
 
 // preview of the current numbered layer
 const layerPreview = document.getElementById('layer_preview');
-
 // this layer is completely private
 // when saving, the numbered layers will be composited here
 const layerComposite = document.getElementById('layer_composite');
-
 // this layer is placed above the numbered layers
 // it exists only to receive mouse events
 const layerPseudo = document.getElementById('layer_pseudo');
+
+// integers to form shape data
+const shapes = [
+  [0, 62, 62, 62, 62, 62, 0], // square
+  [8, 62, 62, 127, 62, 62, 8], // square with nibs
+  [0, 28, 62, 62, 62, 28, 0], // "circle"
+  [0, 8, 28, 62, 28, 8, 0], // starbursty
+];
 
 /**
  * drawing event
@@ -57,7 +63,17 @@ function draw (x, y) {
   const ctx = getCtx();
   ctx.fillStyle = e.color;
   ctx.globalCompositeOperation = e.erasing ? 'destination-out' : 'source-over';
-  ctx.fillRect(x, y, 5, 5);
+
+  // pick a shape
+  let shape = shapes[Math.floor(Math.random() * shapes.length)];
+  for (let field = 0; field < 7; field++) {
+    for (let bit = 0; bit <= 6; bit++) {
+      // draw just one pixel for every bit that's set
+      if (shape[field] & (2 ** bit)) {
+        ctx.fillRect(x + bit, y + field, 1, 1);
+      }
+    }
+  }
 }
 
 /**
